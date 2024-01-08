@@ -57,17 +57,20 @@ public class SSLib {
         return i + 1;
     }
 
-    //Main merge sort method
-    public void mergeSort(int[] array, int left, int right) {
+    public static void mergeSort(int[] array, int left, int right) {
         if (left < right) {
-            // Find the middle point
             int middle = left + (right - left) / 2;
-
-            // Sort the first and second halves
             mergeSort(array, left, middle);
             mergeSort(array, middle + 1, right);
+            merge(array, left, middle, right);
+        }
+    }
 
-            // Merge the sorted halves
+    public static void mergeSort(String[] array, int left, int right) {
+        if (left < right) {
+            int middle = left + (right - left) / 2;
+            mergeSort(array, left, middle);
+            mergeSort(array, middle + 1, right);
             merge(array, left, middle, right);
         }
     }
