@@ -72,29 +72,20 @@ public class SSLib {
         }
     }
 
-    //The helper method that will merge two sorted arrays
-    public void merge(int[] array, int left, int middle, int right) {
-        // Find sizes of two subarrays to be merged
-        int sizeLeft = middle - left + 1;
-        int sizeRight = right - middle;
+    public static void merge(int[] array, int left, int middle, int right) {
+        int sizeLeft = middle - left + 1; // the size of the left sub array
+        int sizeRight = right - middle; // the size of the right sub array
+        int[] leftArray = new int[sizeLeft]; // the left subarray
+        int[] rightArray = new int[sizeRight]; // the right subarray
 
-        // Create temporary arrays
-        int[] leftArray = new int[sizeLeft];
-        int[] rightArray = new int[sizeRight];
-
-        // Copy data to temporary arrays
-        for (int i = 0; i < sizeLeft; ++i)
+        for (int i = 0; i < sizeLeft; i++) {
             leftArray[i] = array[left + i];
-        for (int j = 0; j < sizeRight; ++j)
-            rightArray[j] = array[middle + 1 + j];
-
-        // Merge the temporary arrays
-
-        // Initial indices of the first and second subarrays
-        int i = 0, j = 0;
-
-        // Initial index of the merged subarray array
-        int k = left;
+        }
+        for (int i = 0; i < sizeRight; i++) {
+            rightArray[i] = array[middle + 1 + i];
+        }
+        int i = 0, j = 0; // indexes of the first and second sub arrays
+        int k = left; // index of the merged sub array
         while (i < sizeLeft && j < sizeRight) {
             if (leftArray[i] <= rightArray[j]) {
                 array[k] = leftArray[i];
@@ -105,15 +96,11 @@ public class SSLib {
             }
             k++;
         }
-
-        // Copy the remaining elements of leftArray[] if any
         while (i < sizeLeft) {
             array[k] = leftArray[i];
             i++;
             k++;
         }
-
-        // Copy the remaining elements of rightArray[] if any
         while (j < sizeRight) {
             array[k] = rightArray[j];
             j++;
@@ -121,7 +108,43 @@ public class SSLib {
         }
     }
 
-    public int sequentialSort(int[] array, int target){
+    public static void merge(String[] array, int left, int middle, int right) {
+        int sizeLeft = middle - left + 1; // the size of the left sub array
+        int sizeRight = right - middle; // the size of the right sub array
+        String[] leftArray = new String[sizeLeft]; // the left subarray
+        String[] rightArray = new String[sizeRight]; // the right subarray
+
+        for (int i = 0; i < sizeLeft; i++) {
+            leftArray[i] = array[left + i];
+        }
+        for (int i = 0; i < sizeRight; i++) {
+            rightArray[i] = array[middle + 1 + i];
+        }
+        int i = 0, j = 0; // indexes of the first and second sub arrays
+        int k = left; // index of the merged sub array
+        while (i < sizeLeft && j < sizeRight) {
+            if (!(leftArray[i].compareTo(rightArray[j]) > 0)) {
+                array[k] = leftArray[i];
+                i++;
+            } else {
+                array[k] = rightArray[j];
+                j++;
+            }
+            k++;
+        }
+        while (i < sizeLeft) {
+            array[k] = leftArray[i];
+            i++;
+            k++;
+        }
+        while (j < sizeRight) {
+            array[k] = rightArray[j];
+            j++;
+            k++;
+        }
+    }
+
+    public static int sequentialSort(int[] array, int target){
         for (int i = 0; i < array.length; i++){
             if(array[i] == target) {
                 return i;
@@ -129,7 +152,7 @@ public class SSLib {
         } return -1;
     }
 
-    public int sequentialSort(String[] array, String target) {
+    public static int sequentialSort(String[] array, String target) {
         for (int i = 0; i < array.length; i++) {
             if (array[i].equals(target)) {
                 return i;
@@ -137,9 +160,9 @@ public class SSLib {
         } return -1;
     }
 
-    public int binarySearch(int[] array, int left, int right, int target) {
+    public static int binarySearch(int[] array, int left, int right, int target) {
         if (right >= left) {
-            int mid = left + (right - left) / 2;
+            int mid = left + (right - left) / 2; // the middle index
             if (array[mid] == target) {
                 return mid;
             }
@@ -149,9 +172,9 @@ public class SSLib {
         } return -1;
     }
 
-    public int binarySearch(String[] array, int left, int right, String target) {
+    public static int binarySearch(String[] array, int left, int right, String target) {
         if (right >= left) {
-            int mid = left + (right - left) / 2;
+            int mid = left + (right - left) / 2; // the middle index
             if (array[mid].equals(target)) {
                 return mid;
             }
