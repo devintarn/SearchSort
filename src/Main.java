@@ -7,7 +7,7 @@ public class Main {
         long selectionSortTime = 0;
         long quickSortTime = 0;
         long mergeSortTime = 0;
-        int target = 4517;
+        int target = 0;
         for(int i = 0; i < 3; i++){
             sequentialSearchTime += getSequentialSearchTime(array,target)/3;
             binarySearchTime += getBinarySearchTime(array, target)/3;
