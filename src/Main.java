@@ -3,11 +3,46 @@ public class Main {
 
     private static long getCurrentTime() { return System.nanoTime(); }
 
-    private static long getLinearSearchTime(int[] array, int target) {
+    private static long getSequentialSearchTime(int[] array, int target) {
         long currentTime = getCurrentTime(); // the current time
+        SSLib.sequentialSearch(array, target);
         long nextTime = getCurrentTime(); // the time after the search has run
         return nextTime - currentTime;
     }
+
+    private static long getBinarySearchTime(int[] array, int target) {
+        int[] newArray = Arrays.copyOf(array, array.length);
+        SSLib.quickSort(newArray, 0, newArray.length - 1);
+        long currentTime = getCurrentTime(); // the current time
+        SSLib.binarySearch(newArray, 0, newArray.length - 1, target);
+        long nextTime = getCurrentTime(); // the time after the search has run
+        return nextTime - currentTime;
+    }
+
+    private static long getSelectionSortTime(int[] array) {
+        int[] newArray = Arrays.copyOf(array, array.length);
+        long currentTime = getCurrentTime(); // the current time
+        SSLib.selectionSort(newArray);
+        long nextTime = getCurrentTime(); // the time after the search has run
+        return nextTime - currentTime;
+    }
+
+    private static long getQuickSortTime(int[] array) {
+        int[] newArray = Arrays.copyOf(array, array.length);
+        long currentTime = getCurrentTime(); // the current time
+        SSLib.quickSort(newArray, 0, newArray.length - 1);
+        long nextTime = getCurrentTime(); // the time after the search has run
+        return nextTime - currentTime;
+    }
+
+    private static long getMergeSortTime(int[] array) {
+        int[] newArray = Arrays.copyOf(array, array.length);
+        long currentTime = getCurrentTime(); // the current time
+        SSLib.mergeSort(newArray, 0, newArray.length - 1);
+        long nextTime = getCurrentTime(); // the time after the search has run
+        return nextTime - currentTime;
+    }
+
 
     /** Method Name: createRandomArray
      * @Author Devin Tran
