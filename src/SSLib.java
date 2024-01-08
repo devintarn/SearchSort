@@ -35,31 +35,42 @@ public class SSLib {
     }
 
     private int partition(int[] array, int low, int high) {
-        int pivot = array[high];
-        int i = low - 1;
-
+        int pivot = array[high]; // the pivot point
+        int i = low - 1; // the smallest element in the array
         for (int j = low; j < high; j++) {
             if (array[j] <= pivot) {
                 i++;
-
-                // Swap array[i] and array[j]
-                int temp = array[i];
+                int temp = array[i]; // temp variable for swapping
                 array[i] = array[j];
                 array[j] = temp;
             }
         }
-
-        // Swap array[i + 1] and array[high] (put the pivot element in its correct position)
-        int temp = array[i + 1];
+        int temp = array[i + 1]; // temp variable for swapping
         array[i + 1] = array[high];
         array[high] = temp;
+        return i + 1;
+    }
 
+    private int partition(String[] array, int low, int high) {
+        String pivot = array[high]; // the pivot point
+        int i = low - 1; // the smallest element in the array
+        for (int j = low; j < high; j++) {
+            if (!(array[j].compareTo(pivot) > 0)) {
+                i++;
+                String temp = array[i]; // temp variable for swapping
+                array[i] = array[j];
+                array[j] = temp;
+            }
+        }
+        String temp = array[i + 1]; // temp variable for swapping
+        array[i + 1] = array[high];
+        array[high] = temp;
         return i + 1;
     }
 
     public static void mergeSort(int[] array, int left, int right) {
         if (left < right) {
-            int middle = left + (right - left) / 2;
+            int middle = left + (right - left) / 2; // the middle index
             mergeSort(array, left, middle);
             mergeSort(array, middle + 1, right);
             merge(array, left, middle, right);
@@ -68,7 +79,7 @@ public class SSLib {
 
     public static void mergeSort(String[] array, int left, int right) {
         if (left < right) {
-            int middle = left + (right - left) / 2;
+            int middle = left + (right - left) / 2; // the middle index
             mergeSort(array, left, middle);
             mergeSort(array, middle + 1, right);
             merge(array, left, middle, right);
@@ -80,7 +91,6 @@ public class SSLib {
         int sizeRight = right - middle; // the size of the right sub array
         int[] leftArray = new int[sizeLeft]; // the left subarray
         int[] rightArray = new int[sizeRight]; // the right subarray
-
         for (int i = 0; i < sizeLeft; i++) {
             leftArray[i] = array[left + i];
         }
@@ -116,7 +126,6 @@ public class SSLib {
         int sizeRight = right - middle; // the size of the right sub array
         String[] leftArray = new String[sizeLeft]; // the left subarray
         String[] rightArray = new String[sizeRight]; // the right subarray
-
         for (int i = 0; i < sizeLeft; i++) {
             leftArray[i] = array[left + i];
         }
