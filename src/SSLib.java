@@ -156,7 +156,7 @@ public class SSLib {
         }
     }
 
-    public static int sequentialSort(int[] array, int target){
+    public static int sequentialSearch(int[] array, int target){
         for (int i = 0; i < array.length; i++){
             if(array[i] == target) {
                 return i;
@@ -164,7 +164,7 @@ public class SSLib {
         } return -1;
     }
 
-    public static int sequentialSort(String[] array, String target) {
+    public static int sequentialSearch(String[] array, String target) {
         for (int i = 0; i < array.length; i++) {
             if (array[i].equals(target)) {
                 return i;

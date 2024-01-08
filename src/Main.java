@@ -1,6 +1,15 @@
 import java.util.*;
 public class Main {
 
+    private static long getCurrentTime() { return System.nanoTime(); }
+
+    private static long getLinearSearchTime(int[] array, int target) {
+        long currentTime = getCurrentTime(); // the current time
+
+        long nextTime = getCurrentTime(); // the time after the search has run
+        return nextTime - currentTime;
+    }
+
     /** Method Name: createRandomArray
      * @Author Devin Tran
      * @Date December 20th, 2023
@@ -11,6 +20,7 @@ public class Main {
      * Dependencies: Random
      * Throws/Exceptions: N/A
      */
+
     private static int[] createRandomArray(Random random){
         int[] array = new int[100000];
         for(int i = 0; i < array.length; i++){
