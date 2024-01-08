@@ -1,22 +1,15 @@
-//This is a library of Searches and Sorts
+/*
+ * Author: Devin Tran
+ * Purpose: A library that contains several searches and sorts
+ * Date of Creation: December 20th, 2023
+ */
+
 public class SSLib {
-    private int[] intArray;
-    private String[] stringArray;
-
-    public SSLib(int[] intArray){
-        this.intArray = intArray;
-    }
-
-    public SSLib(String[] stringArray){
-        this.stringArray = stringArray;
-    }
-
 
     public void selectionSort(int[] array) {
         int arraySize = array.length;
         for (int i = 0; i < arraySize - 1; i++) {
             int minIndex = i;
-
             // Find the index of the minimum element in the unsorted part
             for (int j = i + 1; j < arraySize; j++) {
                 if (array[j] < array[minIndex]) {
@@ -128,30 +121,43 @@ public class SSLib {
         }
     }
 
-    public int sequentialSort(int[] array, int value){
-        for(int i = 0; i < array.length; i++){
-            if(array[i] == value) return i;
-        }return -1;
+    public int sequentialSort(int[] array, int target){
+        for (int i = 0; i < array.length; i++){
+            if(array[i] == target) {
+                return i;
+            }
+        } return -1;
     }
 
-    public int binarySearch(int array[], int left, int right, int target) {
+    public int sequentialSort(String[] array, String target) {
+        for (int i = 0; i < array.length; i++) {
+            if (array[i].equals(target)) {
+                return i;
+            }
+        } return -1;
+    }
+
+    public int binarySearch(int[] array, int left, int right, int target) {
         if (right >= left) {
             int mid = left + (right - left) / 2;
-
-            // If the element is present at the middle itself
-            if (array[mid] == target)
+            if (array[mid] == target) {
                 return mid;
-
-            // If the element is smaller than mid, then
-            // it can only be present in the left subarray
-            if (array[mid] > target)
+            }
+            if (array[mid] > target) {
                 return binarySearch(array, left, mid - 1, target);
+            } return binarySearch(array, mid + 1, right, target);
+        } return -1;
+    }
 
-            // Else the element can only be present
-            // in the right subarray
-            return binarySearch(array, mid + 1, right, target);
-        }
-        // We reach here when the element is not present in the array
-        return -1;
+    public int binarySearch(String[] array, int left, int right, String target) {
+        if (right >= left) {
+            int mid = left + (right - left) / 2;
+            if (array[mid].equals(target)) {
+                return mid;
+            }
+            if (array[mid].compareTo(target) < 0) {
+                return binarySearch(array, left, mid - 1, target);
+            } return binarySearch(array, mid + 1, right, target);
+        } return -1;
     }
 }
