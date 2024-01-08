@@ -6,35 +6,53 @@
 
 public class SSLib {
 
-    public void selectionSort(int[] array) {
-        int arraySize = array.length;
+    public static void selectionSort(int[] array) {
+        int arraySize = array.length; // the size of the array
         for (int i = 0; i < arraySize - 1; i++) {
-            int minIndex = i;
-            // Find the index of the minimum element in the unsorted part
+            int minIndex = i; // the minimum index in the array
             for (int j = i + 1; j < arraySize; j++) {
                 if (array[j] < array[minIndex]) {
                     minIndex = j;
                 }
             }
-
-            // Swap the found minimum element with the first element
-            int temp = array[minIndex];
+            int temp = array[minIndex]; // temp variable for swapping
             array[minIndex] = array[i];
             array[i] = temp;
         }
     }
 
-    public void quickSort(int[] array, int low, int high) {
-        if (low < high) {
-            int partition = partition(array, low, high);
+    public static void selectionSort(String[] array) {
+        int arraySize = array.length; // the size of the array
+        for (int i = 0; i < arraySize - 1; i++) {
+            int minIndex = i; // the minimum index in the array
+            for (int j = i + 1; j < arraySize; j++) {
+                if (array[j].compareTo(array[minIndex]) < 0) {
+                    minIndex = j;
+                }
+            }
+            String temp = array[minIndex]; // temp variable for swapping
+            array[minIndex] = array[i];
+            array[i] = temp;
+        }
+    }
 
-            // Recursively sort the elements before and after the partition index
+    public static void quickSort(int[] array, int low, int high) {
+        if (low < high) {
+            int partition = partition(array, low, high); // the partition of the array
             quickSort(array, low, partition - 1);
             quickSort(array, partition + 1, high);
         }
     }
 
-    private int partition(int[] array, int low, int high) {
+    public static void quickSort(String[] array, int low, int high) {
+        if (low < high) {
+            int partition = partition(array, low, high); // the partition of the array
+            quickSort(array, low, partition - 1);
+            quickSort(array, partition + 1, high);
+        }
+    }
+
+    private static int partition(int[] array, int low, int high) {
         int pivot = array[high]; // the pivot point
         int i = low - 1; // the smallest element in the array
         for (int j = low; j < high; j++) {
@@ -51,7 +69,7 @@ public class SSLib {
         return i + 1;
     }
 
-    private int partition(String[] array, int low, int high) {
+    private static int partition(String[] array, int low, int high) {
         String pivot = array[high]; // the pivot point
         int i = low - 1; // the smallest element in the array
         for (int j = low; j < high; j++) {
@@ -86,7 +104,7 @@ public class SSLib {
         }
     }
 
-    public static void merge(int[] array, int left, int middle, int right) {
+    private static void merge(int[] array, int left, int middle, int right) {
         int sizeLeft = middle - left + 1; // the size of the left sub array
         int sizeRight = right - middle; // the size of the right sub array
         int[] leftArray = new int[sizeLeft]; // the left subarray
@@ -121,7 +139,7 @@ public class SSLib {
         }
     }
 
-    public static void merge(String[] array, int left, int middle, int right) {
+    private static void merge(String[] array, int left, int middle, int right) {
         int sizeLeft = middle - left + 1; // the size of the left sub array
         int sizeRight = right - middle; // the size of the right sub array
         String[] leftArray = new String[sizeLeft]; // the left subarray
@@ -156,7 +174,7 @@ public class SSLib {
         }
     }
 
-    public static int sequentialSort(int[] array, int target){
+    public static int sequentialSearch(int[] array, int target){
         for (int i = 0; i < array.length; i++){
             if(array[i] == target) {
                 return i;
@@ -164,7 +182,7 @@ public class SSLib {
         } return -1;
     }
 
-    public static int sequentialSort(String[] array, String target) {
+    public static int sequentialSearch(String[] array, String target) {
         for (int i = 0; i < array.length; i++) {
             if (array[i].equals(target)) {
                 return i;
