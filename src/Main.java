@@ -1,24 +1,25 @@
 import java.util.*;
 public class Main {
-
-    private static void compareTimes(int[] array){
+    private static void compareTimes(int[] array) {
         long sequentialSearchTime = 0;
         long binarySearchTime = 0;
         long selectionSortTime = 0;
         long quickSortTime = 0;
         long mergeSortTime = 0;
-        int target = 0;
-        for(int i = 0; i < 3; i++){
+        int target = 4517;
+        for(int i = 0; i < 3; i++) {
             sequentialSearchTime += getSequentialSearchTime(array,target)/3;
             binarySearchTime += getBinarySearchTime(array, target)/3;
             selectionSortTime += getSelectionSortTime(array)/3;
             quickSortTime += getQuickSortTime(array)/3;
             mergeSortTime += getMergeSortTime(array)/3;
         }
-        long searchDifference = binarySearchTime/sequentialSearchTime;
-        long selectionQuickDifference = selectionSortTime/quickSortTime;
-        long selectionMergeDifference = selectionSortTime/mergeSortTime;
-        long quickMergeDifference = quickSortTime/mergeSortTime;
+        double searchDifference = (double) binarySearchTime /sequentialSearchTime;
+        double selectionQuickDifference = (double) selectionSortTime /quickSortTime;
+        double selectionMergeDifference = (double) selectionSortTime /mergeSortTime;
+        double quickMergeDifference = (double) quickSortTime /mergeSortTime;
+        System.out.printf("\nLinear Search Time: %dns\nBinary Search Time: %dns\nSelection Sort Time: %dns\nQuickSort Time: %dns\nMergeSort Time: %dns\n" , sequentialSearchTime, binarySearchTime, selectionSortTime, quickSortTime, mergeSortTime);
+        System.out.printf("\nBinary Search took %.2fx the time compared to Linear Search.\nSelection Sort took %.2fx the time compared to Quick Sort.\nSelection Sort took %.2fx the time compared to Merge Sort.\nQuick Sort took %.2fx the time compared to Merge Sort.\n", searchDifference, selectionQuickDifference, selectionMergeDifference, quickMergeDifference);
     }
 
     private static long getCurrentTime() { return System.nanoTime(); }
@@ -83,8 +84,7 @@ public class Main {
     }
     public static void main(String[] args) {
         Random random = new Random();
-        int test[] = createRandomArray(random);
-
-
+        int[] test = createRandomArray(random);
+        compareTimes(test);
     }
 }
