@@ -5,7 +5,6 @@ public class Main {
 
     private static long getLinearSearchTime(int[] array, int target) {
         long currentTime = getCurrentTime(); // the current time
-
         long nextTime = getCurrentTime(); // the time after the search has run
         return nextTime - currentTime;
     }
