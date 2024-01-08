@@ -2,11 +2,11 @@ import java.util.*;
 public class Main {
 
     private static void compareTimes(int[] array){
-        int sequentialSearchTime = 0;
-        int binarySearchTime = 0;
-        int selectionSortTime = 0;
-        int quickSortTime = 0;
-        int mergeSortTime = 0;
+        long sequentialSearchTime = 0;
+        long binarySearchTime = 0;
+        long selectionSortTime = 0;
+        long quickSortTime = 0;
+        long mergeSortTime = 0;
         int target = 0;
         for(int i = 0; i < 3; i++){
             sequentialSearchTime += getSequentialSearchTime(array,target)/3;
@@ -15,9 +15,10 @@ public class Main {
             quickSortTime += getQuickSortTime(array)/3;
             mergeSortTime += getMergeSortTime(array)/3;
         }
-        int searchDifference = binarySearchTime/sequentialSearchTime;
-        int selectionQuickDifference = selectionSortTime/quickSortTime;
-        int
+        long searchDifference = binarySearchTime/sequentialSearchTime;
+        long selectionQuickDifference = selectionSortTime/quickSortTime;
+        long selectionMergeDifference = selectionSortTime/mergeSortTime;
+        long quickMergeDifference = quickSortTime/mergeSortTime;
     }
 
     private static long getCurrentTime() { return System.nanoTime(); }
